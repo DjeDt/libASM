@@ -7,6 +7,9 @@
 *.obj
 *.elf
 
+# backup files
+*.s
+
 # Linker output
 *.ilk
 *.map
