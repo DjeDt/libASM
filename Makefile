@@ -6,7 +6,7 @@
 #    By: ddinaut <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/05 22:02:18 by ddinaut           #+#    #+#              #
-#    Updated: 2018/02/05 23:25:27 by ddinaut          ###   ########.fr        #
+#    Updated: 2018/02/12 09:04:06 by ddinaut          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -15,11 +15,13 @@ NAME = libfts.a
 
 # Details #
 CC		= nasm
-FLAGS	= -f macho64 -Wall -Wextra -Werror
+FLAGS	= -g -f macho64 -Wall -Wextra -Werror
 E_FLAG	=
+AR	= ar rc
+RAN	= ranlib
 
 # Path #
-OBJ_PATH = obj
+OBJ_PATH = .obj
 SRC_PATH = srcs
 
 # Sub_dirs #
@@ -34,13 +36,9 @@ COL_YELLOW		= \033[1;33m
 COL_PURPLE		= \033[1;35m
 END_COL			= \033[0;m
 
-AR	= ar rc $(NAME)
-RAN	= ranlib $(NAME)
-INC	= -I $(INC_PATH)
-
 # Sources #
 SRCS = \
-	ft_bzero.s
+	ft_bzero.s 
 
 OBJ	= $(SRC:$(SRC_PATH)/%.s=$(OBJ_PATH)/%.o)
 SRC	= $(addprefix $(SRC_PATH)/,$(SRCS))
@@ -51,12 +49,12 @@ SRC	= $(addprefix $(SRC_PATH)/,$(SRCS))
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(AR) $(OBJ)
-	@$(RANLIB)
+	@$(AR) $(NAME) $(OBJ)
+	@$(RAN) $(NAME)
 
 $(OBJ): $(OBJ_PATH)/%.o : $(SRC_PATH)/%.s
 	@mkdir -p $(dir $@)
-	@$(CC) -o $@ $(FLAG) $(E_FLAG) $<
+	@$(CC) $(FLAG) $(E_FLAG) $< -o $@
 	@printf "\e[1;38;5;148m%s -> %s                                   \r$(END_COL)" $@ $<
 clean:
 	@/bin/rm -rf $(OBJ_PATH)
