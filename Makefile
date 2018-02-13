@@ -6,7 +6,7 @@
 #    By: ddinaut <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/05 22:02:18 by ddinaut           #+#    #+#              #
-#    Updated: 2018/02/12 09:04:06 by ddinaut          ###   ########.fr        #
+#    Updated: 2018/02/13 13:39:35 by ddinaut          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -14,9 +14,10 @@
 NAME = libfts.a
 
 # Details #
-CC		= nasm
-FLAGS	= -g -f macho64 -Wall -Wextra -Werror
+CC		= nasm -f macho64
+FLAGS	= -Wall -Wextra -Werror
 E_FLAG	=
+
 AR	= ar rc
 RAN	= ranlib
 
@@ -38,7 +39,8 @@ END_COL			= \033[0;m
 
 # Sources #
 SRCS = \
-	ft_bzero.s 
+	ft_bzero.s \
+	ft_strcat.s
 
 OBJ	= $(SRC:$(SRC_PATH)/%.s=$(OBJ_PATH)/%.o)
 SRC	= $(addprefix $(SRC_PATH)/,$(SRCS))
