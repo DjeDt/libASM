@@ -6,7 +6,7 @@
 #    By: ddinaut <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/05 22:02:18 by ddinaut           #+#    #+#              #
-#    Updated: 2018/02/14 15:27:55 by ddinaut          ###   ########.fr        #
+#    Updated: 2018/02/14 19:59:42 by ddinaut          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -41,7 +41,14 @@ END_COL			= \033[0;m
 SRCS = \
 	ft_bzero.s \
 	ft_strcat.s \
-	ft_strcpy.s
+	ft_strcpy.s \
+	ft_isupper.s \
+	ft_islower.s \
+	ft_isalpha.s \
+	ft_isdigit.s \
+	ft_toupper.s \
+	ft_tolower.s \
+	ft_puts.s
 
 OBJ	= $(SRC:$(SRC_PATH)/%.s=$(OBJ_PATH)/%.o)
 SRC	= $(addprefix $(SRC_PATH)/,$(SRCS))
