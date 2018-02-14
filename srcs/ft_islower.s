@@ -7,13 +7,10 @@ _ft_islower:
 	push	rbp
 	mov	rbp, rsp
 	cmp	rdi, 97
-	jge	.cmp
-	jmp	.nope
-
-.cmp:
+	jl	.nope
 	cmp	rdi, 122
-	jle	.success
-	jmp	.nope
+	jg	.nope	
+	jmp	.success
 
 .success:
 	mov	rax, 1
@@ -21,6 +18,6 @@ _ft_islower:
 	ret
 
 .nope:
-	mov	rax, 0
+	xor	rax, rax
 	leave
 	ret

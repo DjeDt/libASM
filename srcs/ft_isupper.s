@@ -6,14 +6,13 @@ section	.text
 _ft_isupper:
 	push	rbp
 	mov	rbp, rsp	
-	cmp	rdi, 65
-	jge	.cmp
-	jmp	.nope
 
-.cmp:
+	cmp	rdi, 65
+	jl	.nope
+
 	cmp	rdi, 90
-	jle	.success
-	jmp	.nope
+	jg	.nope
+	jmp	.success
 
 .success:
 	mov	rax, 1
@@ -21,6 +20,6 @@ _ft_isupper:
 	ret
 
 .nope:
-	mov	rax, 0
+	xor	rax, rax
 	leave
 	ret
