@@ -6,7 +6,7 @@
 #    By: ddinaut <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/05 22:02:18 by ddinaut           #+#    #+#              #
-#    Updated: 2018/02/13 13:39:35 by ddinaut          ###   ########.fr        #
+#    Updated: 2018/02/14 15:27:55 by ddinaut          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -40,7 +40,8 @@ END_COL			= \033[0;m
 # Sources #
 SRCS = \
 	ft_bzero.s \
-	ft_strcat.s
+	ft_strcat.s \
+	ft_strcpy.s
 
 OBJ	= $(SRC:$(SRC_PATH)/%.s=$(OBJ_PATH)/%.o)
 SRC	= $(addprefix $(SRC_PATH)/,$(SRCS))
