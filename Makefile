@@ -6,7 +6,7 @@
 #    By: ddinaut <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/05 22:02:18 by ddinaut           #+#    #+#              #
-#    Updated: 2018/02/14 19:59:42 by ddinaut          ###   ########.fr        #
+#    Updated: 2018/02/15 17:50:06 by ddinaut          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -38,17 +38,21 @@ COL_PURPLE		= \033[1;35m
 END_COL			= \033[0;m
 
 # Sources #
-SRCS = \
-	ft_bzero.s \
-	ft_strcat.s \
-	ft_strcpy.s \
-	ft_isupper.s \
-	ft_islower.s \
-	ft_isalpha.s \
-	ft_isdigit.s \
-	ft_toupper.s \
-	ft_tolower.s \
-	ft_puts.s
+SRCS =				\
+	ft_bzero.s		\
+	ft_strcat.s		\
+	ft_strcpy.s		\
+	ft_isupper.s	\
+	ft_islower.s	\
+	ft_isalpha.s	\
+	ft_isdigit.s	\
+	ft_toupper.s	\
+	ft_tolower.s	\
+	ft_puts.s		\
+	ft_strlen.s		\
+	ft_memset.s		\
+	ft_memcpy.s		\
+	ft_strdup.s
 
 OBJ	= $(SRC:$(SRC_PATH)/%.s=$(OBJ_PATH)/%.o)
 SRC	= $(addprefix $(SRC_PATH)/,$(SRCS))
@@ -66,6 +70,7 @@ $(OBJ): $(OBJ_PATH)/%.o : $(SRC_PATH)/%.s
 	@mkdir -p $(dir $@)
 	@$(CC) $(FLAG) $(E_FLAG) $< -o $@
 	@printf "\e[1;38;5;148m%s -> %s                                   \r$(END_COL)" $@ $<
+
 clean:
 	@/bin/rm -rf $(OBJ_PATH)
 

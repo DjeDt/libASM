@@ -12,6 +12,9 @@
 
 #include <stdio.h>
 #include <ctype.h>
+#include <string.h>
+#include <stdlib.h>
+
 
 void	ft_bzero(void *s, unsigned int i);
 char	*ft_strcat(char *s1, char *s2);
@@ -23,22 +26,27 @@ int	ft_isdigit(int c);
 int	ft_toupper(int c);
 int	ft_tolower(int c);
 void	ft_puts(char *str);
+int	ft_strlen(char *str);
+void	*ft_memset(void *b, int c, size_t len);
+void	*ft_memcpy(void *dst, void *src, size_t n);
+char	*ft_strdup(char *s);
+
 
 void	test_bzero(void)
 {
 	char test[10] = {101, 101,101,101,101,101,101,101,101,101,};
 	ft_bzero(test, 10);
 
-    printf("%c\n", test[0]);
-    printf("%c\n", test[1]);
-    printf("%c\n", test[2]);
-    printf("%c\n", test[3]);
-    printf("%c\n", test[4]);
-    printf("%c\n", test[5]);
-    printf("%c\n", test[6]);
-    printf("%c\n", test[7]);
-    printf("%c\n", test[8]);
-    printf("%c\n", test[9]);
+    printf("%d\n", test[0]);
+    printf("%d\n", test[1]);
+    printf("%d\n", test[2]);
+    printf("%d\n", test[3]);
+    printf("%d\n", test[4]);
+    printf("%d\n", test[5]);
+    printf("%d\n", test[6]);
+    printf("%d\n", test[7]);
+    printf("%d\n", test[8]);
+    printf("%d\n", test[9]);
 }
 
 void	test_strcat(void)
@@ -207,6 +215,124 @@ void	test_tolower(void)
 	printf("ret : %c %c\n", c, c2);
 }
 
+void	test_puts(void)
+{
+	ft_puts("test\n");
+	ft_puts("");
+	ft_puts("puts is working hard\n");
+	ft_puts("Hello World!\n\0");
+}
+
+void	test_strlen(void)
+{
+	int	ret;
+	int	ret2;
+
+	ret = ft_strlen("test");
+	ret2 = strlen("test");
+	printf("ret = %d %d\n", ret, ret2);
+
+	ret = ft_strlen("\0");
+	ret2 = strlen("\0");
+	printf("ret = %d %d\n", ret, ret2);
+
+	ret = ft_strlen("Hello World!\n\0");
+	ret2 = strlen("Hello World!\n\0");
+	printf("ret = %d %d\n", ret, ret2);
+
+	ret = ft_strlen("testatest");
+	printf("%d\n", ret);
+}
+
+void	test_memset(void)
+{
+	char	*test;
+	int	len = 10;
+	
+	test = malloc(len);
+	test = ft_memset(test, 'v', len);
+
+	printf("%d ", test[0]);
+	printf("%d ", test[1]);
+	printf("%d ", test[2]);
+	printf("%d ", test[3]);
+	printf("%d ", test[4]);
+	printf("%d ", test[5]);
+	printf("%d ", test[6]);
+	printf("%d ", test[7]);
+	printf("%d ", test[8]);
+	printf("%d\n", test[9]);
+
+
+	test = ft_memset(test, 'O', len);
+
+	printf("%d ", test[0]);
+	printf("%d ", test[1]);
+	printf("%d ", test[2]);
+	printf("%d ", test[3]);
+	printf("%d ", test[4]);
+	printf("%d ", test[5]);
+	printf("%d ", test[6]);
+	printf("%d ", test[7]);
+	printf("%d ", test[8]);
+	printf("%d\n", test[9]);
+
+
+	test = ft_memset(test, '\0', len);
+
+	printf("%d ", test[0]);
+	printf("%d ", test[1]);
+	printf("%d ", test[2]);
+	printf("%d ", test[3]);
+	printf("%d ", test[4]);
+	printf("%d ", test[5]);
+	printf("%d ", test[6]);
+	printf("%d ", test[7]);
+	printf("%d ", test[8]);
+	printf("%d\n", test[9]);
+
+
+	test = ft_memset(test, 'a', len);
+
+	printf("%d ", test[0]);
+	printf("%d ", test[1]);
+	printf("%d ", test[2]);
+	printf("%d ", test[3]);
+	printf("%d ", test[4]);
+	printf("%d ", test[5]);
+	printf("%d ", test[6]);
+	printf("%d ", test[7]);
+	printf("%d ", test[8]);
+	printf("%d\n", test[9]);
+
+	free(test);
+}
+
+void	test_memcpy(void)
+{
+	char	dst[11];
+	char	src[11];
+	
+	ft_bzero(dst, 11);
+	ft_bzero(src, 11);
+
+	ft_memset(src, 'b', 10);
+	ft_memcpy(dst, src, 10);
+	write(1, dst, 10);
+}
+
+void	test_strdup(void)
+{
+	char	*t1;
+	char	*t2;
+	char	*t3;
+	
+	t1 = ft_strdup("test");
+	t2 = ft_strdup("Hello World");
+	t3 = ft_strdup("coucou ca fonctionne!");
+	printf("s1: %s\ns2: %s\ns3: %s\n", t1, t2, t3);
+}
+
 int	main(void)
 {
 //	test_bzero();
@@ -217,6 +343,10 @@ int	main(void)
 //	test_isalpha();
 //	test_toupper();
 //	test_tolower();
-	ft_puts("");
+//	test_puts();
+//	test_strlen();
+//	test_memset();
+//	test_memcpy();
+	test_strdup();
 	return (0);
 }
