@@ -12,7 +12,7 @@ _ft_strlen:
         mov	rcx, -1			; pour gerer repne et rcx == 0
         mov	rsi, rdi		; backup rdi to rsi 
 
-        mov	al, 0			; byte to search for
+        mov	al, 0x0			; byte to search for
         repne	scasb			; repne	: termination condition -> [ ecx = 0] & [ZF = 1]
 					; scas	: Find non-AL byte starting at ES:[(E)DI] (b -> byte)
 					; both	: Scan string for NULL, decrementing CX for each char

@@ -3,28 +3,47 @@
 %define STDOUT	1
 
 section	.data
+msg:
+	.nope:		db "(null)"
+	.new_line:	db 0x0a
 
+	.len:		equ $ - .nope
 
 section	.text
 	global	_ft_puts
+	extern	_ft_strlen
 
 _ft_puts:
 	push	rbp
 	mov	rbp, rsp
+	test	rdi, rdi		; if (!rdi)
+	jz	.nul			; then return
 
 .print:
-	cmp	byte [rdi], 0x0
-	je	.ret
-	mov	r8, rdi
+	push	rdi			; backup rdi
+	call	_ft_strlen
+	mov	rdx, rax
 	mov	rdi, STDOUT
-	mov	rsi, r8
+	pop	rsi
+	mov	rax, MAC_SYSCALL(WRITE)
+	syscall
+	jmp	.ret
+
+.nul:
+	mov	rdi, STDOUT
+	lea	rsi, [rel msg.nope]
+	mov	rdx, msg.len
+	mov	rax, MAC_SYSCALL(WRITE)
+	syscall
+	leave
+	ret
+
+.ret:
+	mov	rdi, STDOUT
+	lea	rsi, [rel msg.new_line]
 	mov	rdx, 1
 	mov	rax, MAC_SYSCALL(WRITE)
 	syscall
-	mov	rdi, r8
-	inc	rdi
-	jmp	.print
-
-.ret:
+	mov	rax, 1
 	leave
 	ret

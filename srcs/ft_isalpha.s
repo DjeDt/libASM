@@ -3,8 +3,6 @@ section .data
 section .text
 	global	_ft_isalpha
 
-;	int	ft_isaplha(int c)
-
 _ft_isalpha:
 	push	rbp
 	mov	rbp, rsp

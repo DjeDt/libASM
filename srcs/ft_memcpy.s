@@ -6,17 +6,13 @@ section	.text
 _ft_memcpy:
 	push	rbp
 	mov	rbp, rsp
-	jmp	.fill
 
-.fill:
-	mov	r8, rdi		; on save dst
 	mov	rcx, rdx	; set up loop len
+	rep	movsb		; copies a single byte from the source string, at address DS:SI
+				; to the destination string, at address ES:DI
+				; then increments (or decrements, if the Direction flag is set) both SI and DI
 
-	mov	al, byte [rsi]	; on met le byte de rsi dans al
-	repne	stosb		; Fill (E)CX bytes at ES:[(E)DI] with AL
-				; repne : termination condition -> [ ecx = 0] & [ZF = 1]
-				; Fill (E)CX bytes at ES:[(E)DI] with AL
+	mov	rax, rdi	; return (dst);
 
-	mov	rax, r8		; return (dst);
 	leave
 	ret

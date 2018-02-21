@@ -6,6 +6,7 @@ section .text
 _ft_strcat:
 	push	rbp
 	mov	rbp, rsp
+	push	rdi			; backup rdi
 
 .check:					; Check si *s1 =='\0'
 	cmp	byte [rdi], 0x0		; if (rbx == '\0')
@@ -23,6 +24,8 @@ _ft_strcat:
 	jmp	.copy			; if *s2 != '\0' copy again
 
 .ret:
+	mov	byte [rdi], 0x0		; add '\0'
+	pop	rdi
 	mov	rax, rdi		; return (s1)
 	leave
 	ret
