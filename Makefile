@@ -6,7 +6,7 @@
 #    By: ddinaut <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/05 22:02:18 by ddinaut           #+#    #+#              #
-#    Updated: 2018/02/15 17:50:06 by ddinaut          ###   ########.fr        #
+#    Updated: 2018/02/26 15:38:33 by ddinaut          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -52,7 +52,8 @@ SRCS =				\
 	ft_strlen.s		\
 	ft_memset.s		\
 	ft_memcpy.s		\
-	ft_strdup.s
+	ft_strdup.s		\
+	ft_cat.s
 
 OBJ	= $(SRC:$(SRC_PATH)/%.s=$(OBJ_PATH)/%.o)
 SRC	= $(addprefix $(SRC_PATH)/,$(SRCS))
