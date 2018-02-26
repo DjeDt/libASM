@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   strcpy_test.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddinaut <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/14 14:39:59 by ddinaut           #+#    #+#             */
-/*   Updated: 2018/02/26 11:21:55 by ddinaut          ###   ########.fr       */
+/*   Created: 2018/02/26 11:18:12 by ddinaut           #+#    #+#             */
+/*   Updated: 2018/02/26 11:24:19 by ddinaut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test.h"
+#include "../test.h"
 
-int	main(void)
+#define LEN	20
+
+void	test_strcpy(void)
 {
-	test_strcpy();
-//	test_bzero();
-//	test_strcat();
-//	test_strcpy();
-//	test_isupper();
-//	test_islower();
-//	test_isalpha();
-//	test_toupper();
-//	test_tolower();
-//	test_puts();
-//	test_strlen();
-//	test_memset();
-//	test_memcpy();
-//	test_strdup();
-	return (0);
+	char	s1[LEN];
+	char	*s2;
+
+	if (!(s2 = (char*)malloc(sizeof(char) * LEN)))
+		return ;
+	ft_bzero(s1, LEN);
+	ft_bzero(s2, LEN);
+
+	ft_strcpy(s1, "Hello World!");
+	s2  = ft_strcpy(s2, s1);
+
+	printf("Should print 'Hello World!' 2 times :\n");
+
+	printf("%s\n", s1);
+	printf("%s\n", s2);
+	free(s2);
 }

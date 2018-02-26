@@ -6,7 +6,7 @@
 /*   By: ddinaut <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 18:21:56 by ddinaut           #+#    #+#             */
-/*   Updated: 2018/02/21 23:17:43 by ddinaut          ###   ########.fr       */
+/*   Updated: 2018/02/26 11:22:41 by ddinaut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	test_memset(void);
 void	test_memcpy(void);
 void	test_bzero(void);
 void	test_strdup(void);
-
+void	test_strcpy(void);
 
 /*	libASM func	*/
 
@@ -46,13 +46,13 @@ int		ft_isdigit(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 
-void	ft_puts(char *str);
-int		ft_strlen(char *str);
+void	ft_puts(const char *str);
+int		ft_strlen(const char *str);
 void	ft_bzero(void *s, unsigned int i);
-char	*ft_strdup(char *s);
-char	*ft_strcat(char *s1, char *s2);
-char	*ft_strcpy(char *s1, char *s2);
+char	*ft_strdup(const char *s);
+char	*ft_strcat(char *s1, const char *s2);
+char	*ft_strcpy(char *s1, const char *s2);
 void	*ft_memset(void *b, int c, size_t len);
-void	*ft_memcpy(void *dst, void *src, size_t n);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
 
 #endif
