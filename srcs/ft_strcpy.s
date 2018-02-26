@@ -3,11 +3,10 @@ section .data
 section .text
 	global	_ft_strcpy
 
-;	ft_strcpy(char *dst, char *src)
-
 _ft_strcpy:
         push    rbp
         mov     rbp, rsp
+	mov	r8, rdi
 
 .copy:
         cmp     byte [rsi], 0x0
@@ -19,6 +18,6 @@ _ft_strcpy:
 	jmp	.copy
 
 .quit:
-	mov	rax, rdi
+	mov	rax, r8
         leave
         ret
