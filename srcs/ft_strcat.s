@@ -25,7 +25,6 @@ _ft_strcat:
 
 .ret:
 	mov	byte [rdi], 0x0		; add '\0'
-	pop	rdi
-	mov	rax, rdi		; return (s1)
+	pop	rax			; return (rdi)
 	leave
 	ret
