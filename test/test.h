@@ -6,7 +6,7 @@
 /*   By: ddinaut <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 18:21:56 by ddinaut           #+#    #+#             */
-/*   Updated: 2018/02/26 11:22:41 by ddinaut          ###   ########.fr       */
+/*   Updated: 2018/02/26 15:38:49 by ddinaut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include	<string.h>
 #include	<stdlib.h>
 #include	<unistd.h>
+#include	<fcntl.h>
 
 /*	Test func	*/
 
@@ -36,6 +37,7 @@ void	test_memcpy(void);
 void	test_bzero(void);
 void	test_strdup(void);
 void	test_strcpy(void);
+void	test_cat(const char *path);
 
 /*	libASM func	*/
 
@@ -54,5 +56,6 @@ char	*ft_strcat(char *s1, const char *s2);
 char	*ft_strcpy(char *s1, const char *s2);
 void	*ft_memset(void *b, int c, size_t len);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
+void	ft_cat(int fd);
 
 #endif

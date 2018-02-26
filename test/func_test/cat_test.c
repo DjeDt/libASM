@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cat_test.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddinaut <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/14 14:39:59 by ddinaut           #+#    #+#             */
-/*   Updated: 2018/02/26 15:53:55 by ddinaut          ###   ########.fr       */
+/*   Created: 2018/02/26 12:17:35 by ddinaut           #+#    #+#             */
+/*   Updated: 2018/02/26 15:53:39 by ddinaut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test.h"
+#include "../test.h"
 
-int		main(void)
+void	test_cat(const char *path)
 {
-/*
-	test_strcpy();
-	test_bzero();
-	test_strcat();
-	test_strcpy();
-	test_isupper();
-	test_islower();
-	test_isalpha();
-	test_toupper();
-	test_tolower();
-	test_puts();
-	test_strlen();
-	test_memset();
-	test_memcpy();
-	test_strdup();
-	test_cat("./test.cat");
-*/
-	return (0);
+	int fd;
+
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+	{
+		printf("bad file descriptor");
+		return ;
+	}
+	ft_cat(fd);
 }
