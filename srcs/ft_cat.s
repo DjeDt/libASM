@@ -23,7 +23,7 @@ _ft_cat:
 
 .loop_read:
 	push	rdi			; backup fd
-	lea	rsi, [rbp - LEN]	; tmp address
+	lea	rsi, [rbp - LEN]	; tmp address in rsi
 	mov	rdx, LEN
 	mov	rax, MAC_SYSCALL(READ)
 	syscall				; read
