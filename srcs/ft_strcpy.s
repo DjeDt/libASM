@@ -6,7 +6,7 @@ section .text
 _ft_strcpy:
         push    rbp
         mov     rbp, rsp
-	mov	r8, rdi
+	push	rdi
 
 .copy:
         cmp     byte [rsi], 0x0
@@ -18,6 +18,6 @@ _ft_strcpy:
 	jmp	.copy
 
 .quit:
-	mov	rax, r8
+	pop	rax
         leave
         ret
