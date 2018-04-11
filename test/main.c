@@ -6,7 +6,7 @@
 /*   By: ddinaut <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 14:39:59 by ddinaut           #+#    #+#             */
-/*   Updated: 2018/02/26 15:53:55 by ddinaut          ###   ########.fr       */
+/*   Updated: 2018/03/15 13:39:15 by ddinaut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ int		main(void)
 	test_isalpha();
 	test_toupper();
 	test_tolower();
-	test_puts();
 	test_strlen();
 	test_memset();
 	test_memcpy();
 	test_strdup();
-	test_cat("./test.cat");
 */
+	test_cat("./test.cat");
+//	test_puts();
 	return (0);
 }
