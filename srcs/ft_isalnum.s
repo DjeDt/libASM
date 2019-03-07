@@ -1,18 +1,25 @@
 section .text
-	global	_ft_isalpha
+	global _ft_isalnum
 
-_ft_isalpha:
+_ft_isalnum:
 	push	rbp
 	mov		rbp, rsp
-	cmp		rdi, 65
+
+	cmp		rdi, 48
 	jl		.nope
 	cmp		rdi, 122
 	jg		.nope
+
+	cmp		rdi, 57
+	jle		.success
+
+	cmp		rdi, 65
+	jl		.nope
 	cmp		rdi, 90
 	jle		.success
+
 	cmp		rdi, 97
-	jge		.success
-	jmp		.nope
+	jl		.nope
 
 .success:
 	mov		rax, 1

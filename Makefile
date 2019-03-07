@@ -14,9 +14,9 @@
 NAME = libfts.a
 
 # Details #
-CC		= nasm -f macho64
-FLAGS	= -Wall -Wextra -Werror
-E_FLAG	=
+CC		= nasm
+FLAGS	= -f macho64
+E_FLAG	= -Wall -Wextra -Werror
 
 AR	= ar rc
 RAN	= ranlib
@@ -24,6 +24,7 @@ RAN	= ranlib
 # Path #
 OBJ_PATH = .obj
 SRC_PATH = srcs
+INC_PATH = includes
 
 # Sub_dirs #
 
@@ -43,6 +44,7 @@ SRCS =				\
 	ft_strcat.s		\
 	ft_strcpy.s		\
 	ft_isupper.s	\
+	ft_isalnum.s	\
 	ft_islower.s	\
 	ft_isalpha.s	\
 	ft_isdigit.s	\
@@ -59,7 +61,7 @@ OBJ	= $(SRC:$(SRC_PATH)/%.s=$(OBJ_PATH)/%.o)
 SRC	= $(addprefix $(SRC_PATH)/,$(SRCS))
 
 # Rules #
-.PHONY: all clean fclean re
+.PHONY: all clean fclean test re
 
 all: $(NAME)
 
@@ -69,8 +71,11 @@ $(NAME): $(OBJ)
 
 $(OBJ): $(OBJ_PATH)/%.o : $(SRC_PATH)/%.s
 	@mkdir -p $(dir $@)
-	@$(CC) $(FLAG) $(E_FLAG) $< -o $@
+	@$(CC) $(FLAG) $(E_FLAG) -I$(INC_PATH) $< -o $@
 	@printf "\e[1;38;5;148m%s -> %s                                   \r$(END_COL)" $@ $<
+
+test:
+	gcc main.c -I$(INC_PATH) -L. -lfts
 
 clean:
 	@/bin/rm -rf $(OBJ_PATH)

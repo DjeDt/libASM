@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.h                                             :+:      :+:    :+:   */
+/*   libasm.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddinaut <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,36 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef		TEST_H
-# define	TEST_H
-
-#include	<stdio.h>
-#include	<ctype.h>
-#include	<string.h>
-#include	<stdlib.h>
-#include	<unistd.h>
-#include	<fcntl.h>
-
-/*	Test func	*/
-
-void	test_strcat(void);
-void	test_isupper(void);
-void	test_islower(void);
-void	test_isalpha(void);
-void	test_toupper(void);
-void	test_tolower(void);
-void	test_isdigit(void);
-
-void	test_puts(void);
-void	test_strlen(void);
-void	test_memset(void);
-void	test_memcpy(void);
-void	test_bzero(void);
-void	test_strdup(void);
-void	test_strcpy(void);
-void	test_cat(const char *path);
-
-/*	libASM func	*/
+#ifndef		LIBASM_H
+# define	LIBASM_H
 
 int		ft_isupper(int c);
 int		ft_islower(int c);
