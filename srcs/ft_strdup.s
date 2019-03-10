@@ -1,5 +1,3 @@
-section	.data
-
 section	.text
 	global	_ft_strdup
 	extern	_malloc
@@ -8,22 +6,23 @@ section	.text
 
 _ft_strdup:
 	push	rbp
-	mov	rbp, rsp
-	
-	push	rdi		; backup src to heap	[1]
+	mov		rbp, rsp
+	push	rdi
 	call	_ft_strlen
 
-
-	mov	rdi, rax
-	push	rdi		; backup len to heap	[2]
+	mov		rdi, rax
+	push	rdi
 	call	_malloc
-	
-	mov	rdi, rax	; on bouge la chaine allouee dans rdi (dst)
-	mov	r8, rdi
-	pop	rdx		; len to rdx [2]
-	pop	rsi		; src to rsi [1]
-	call	_ft_memcpy
+	cmp		rax, 0x0
+	je		.ret
 
-	mov	rax, r8
+	mov		rdi, rax
+	mov		r8, rdi
+	pop		rdx
+	pop		rsi
+	call	_ft_memcpy
+	mov		rax, r8
+
+.ret:
 	leave
 	ret

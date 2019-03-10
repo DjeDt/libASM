@@ -1,13 +1,14 @@
-%define	MAC_SYSCALL(nb) 0x2000000 | nb
-%define	LEN	0x800	; 4096
+%define	MACSYSCALL(nb) 0x2000000 | nb
+%define	LEN		0x1000
 %define	STDOUT	1
+%define	STDERR	2
 %define	READ	3
 %define	WRITE	4
 
 section	.data
 msg:
 	.err_fd:	db "bad file descriptor", 0x0a
-	.len :		equ $ - .err_fd	
+	.len:		equ $ - .err_fd
 
 section	.text
 	global	_ft_cat
@@ -15,44 +16,43 @@ section	.text
 
 _ft_cat:
 	push	rbp
-	mov	rbp, rsp
-
-	cmp	rdi, 0			; fd is valid ?
-	jl	.err_fd
-	sub	rsp, LEN		; tmp[4096]
+	mov		rbp, rsp
+	cmp		edi, 0
+	jl		.err_fd
+	sub		rsp, LEN
 
 .loop_read:
-	push	rdi			; backup fd
-	lea	rsi, [rbp - LEN]	; tmp address in rsi
-	mov	rdx, LEN
-	mov	rax, MAC_SYSCALL(READ)
-	syscall				; read
+	push	rdi
+	lea		rsi, [rbp - LEN]
+	mov		rdx, LEN
+	mov		rax, MACSYSCALL(READ)
+	syscall
 
-	cmp	rax, 1			; ret < 1 ? return ;
-	jl	.ret
+	cmp		rax, 0
+	jle		.ret
 
-	mov	rdi, STDOUT
-	lea	rsi, [rbp - LEN]
-	mov	rdx, rax		; retour de read
-	mov	rax, MAC_SYSCALL(WRITE)
-	syscall				; write
+	mov		rdi, STDOUT
+	lea		rsi, [rbp - LEN]
+	mov		rdx, rax
+	mov		rax, MACSYSCALL(WRITE)
+	syscall
 
-	lea	rdi, [rbp - LEN]
-	mov	rsi, 0x20
+	lea		rdi, [rbp - LEN]
+	mov		rsi, LEN
 	call	_ft_bzero
 
-	pop	rdi			; fd to rdi
-	jmp	.loop_read
-
-.ret:
-	leave
-	ret
+	pop		rdi
+	jmp		.loop_read
 
 .err_fd:
-	mov	rdi, STDOUT
-	lea	rsi, [rel msg.err_fd]
-	mov	rdx, msg.len
-	mov	rax, MAC_SYSCALL(WRITE)
+	push	rdi
+	mov		rdi, STDERR
+	lea		rsi, [rel msg.err_fd]
+	mov		rdx, msg.len
+	mov		rax, MACSYSCALL(WRITE)
 	syscall
+	pop		rdi
+
+.ret:
 	leave
 	ret
