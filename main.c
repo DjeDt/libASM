@@ -391,6 +391,61 @@ void	test_cat(void)
 	ft_cat(-1);
 }
 
+void	test_memalloc(void)
+{
+	void	*ptr = NULL;
+
+	printf("===========> ft_memalloc() tests:\n");
+	ptr = ft_memalloc(10);
+	if (ptr == NULL)
+	{
+		printf("malloc failed\n");
+		return ;
+	}
+	memcpy(ptr, "Hello!", 5);
+	printf("%s\n", ptr);
+	free(ptr);
+}
+
+void	test_putchar(void)
+{
+	printf("===========> ft_putchar() tests:\n");
+	ft_putchar('H');
+	ft_putchar('e');
+	ft_putchar('l');
+	ft_putchar('l');
+	ft_putchar('o');
+	ft_putchar('!');
+	ft_putchar('\n');
+}
+
+void	test_putstr(void)
+{
+	printf("===========> ft_putstr() tests:\n");
+	ft_putstr("Hello World!\n");
+}
+
+void	test_putendl(void)
+{
+	printf("===========> ft_putendl() tests:\n");
+	ft_putendl("Hello putendl");
+}
+
+void	test_strncpy(void)
+{
+	printf("===========> ft_strncpy() tests:\n");
+	char	*ptr = NULL;
+	size_t	size = 10;
+	char	test[] = "it should be cut in the middle of the string";
+
+	ptr = ft_memalloc(size);
+	if (!ptr)
+		return ;
+	strncpy(ptr, test, 16);
+	printf("%s\n", ptr);
+	free(ptr);
+}
+
 void	first_part(void)
 {
 	full_is();
@@ -414,20 +469,11 @@ void	third_part(void)
 
 void	bonus_part(void)
 {
-	void	*ptr = NULL;
-
-	printf("===========> ft_memalloc() tests:\n");
-	ptr = ft_memalloc(50);
-	if (ptr == NULL)
-	{
-		printf("malloc failed\n");
-		return ;
-	}
-	memcpy(ptr, "Hello", 5);
-//	ptr = strcpy(ptr, "aaaaaaaaa");
-	printf("%s\n", ptr);
-	free(ptr);
-
+	test_memalloc();
+	test_putchar();
+	test_putstr();
+	test_putendl();
+	test_strncpy();
 }
 
 int main(void)

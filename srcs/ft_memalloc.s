@@ -6,6 +6,7 @@ section .text
 _ft_memalloc:
 	push	rbp
 	mov		rbp, rsp
+	sub		rsp, 8
 
 	push	rdi					; backup len
 	call	_malloc

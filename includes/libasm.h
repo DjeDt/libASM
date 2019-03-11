@@ -31,7 +31,12 @@ char	*ft_strcat(char *s1, const char *s2);
 char	*ft_strcpy(char *s1, const char *s2);
 void	*ft_memset(void *b, int c, size_t len);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
-void	*ft_memalloc(size_t size);
 void	ft_cat(int fd);
+
+void	*ft_memalloc(size_t size);
+void	ft_putchar(char c);
+void	ft_putstr(char *s);
+void	ft_putendl(char *s);
+void	ft_strncpy(char *s1, const char *s2, size_t n);
 
 #endif
